@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IControllerSubTest.cs" />
+    <Compile Include="IModelSubTest.cs" />
+    <Compile Include="IViewSubTest.cs" />
     <Compile Include="ViewSubTest.cs">
       <SubType>Form</SubType>
     </Compile>
