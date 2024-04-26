@@ -8,15 +8,33 @@ namespace SubTest
 {
     internal static class Program
     {
-        /// <summary>
-        /// Der Haupteinstiegspunkt für die Anwendung.
-        /// </summary>
+
+
+        private static IModelSubTest modelSubTest;
+        private static IViewSubTest viewSubTest;
+        private static IControllerSubTest controllerSubTest;
+
         [STAThread]
+
+
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ViewSubTest());
+            modelSubTest = new ModelSubTest();
+            viewSubTest = new ViewSubTest();
+            controllerSubTest = new ControllerSubTest();
+
+            modelSubTest.View = viewSubTest;
+            modelSubTest.Controller = controllerSubTest;
+
+            viewSubTest.Model = modelSubTest;
+            viewSubTest.Controller = controllerSubTest;
+
+            controllerSubTest.Model = modelSubTest;
+            controllerSubTest.View = viewSubTest;
+
+            Application.Run((Form) viewSubTest);
         }
     }
 }
